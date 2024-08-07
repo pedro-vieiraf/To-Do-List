@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build: .
+    container_name: frontend
+    tty: true
+    stdin_open: true
+    ports:
+      - 5173:5173
+    volumes:
+      - ./:/app
+    environment:
+      - TZ=UTC
+      - NODE_ENV=development
+      - HOST=0.0.0.0
