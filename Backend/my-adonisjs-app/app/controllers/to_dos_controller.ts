@@ -7,6 +7,9 @@ export default class ToDosController {
       const list = await ToDo.query()
         .select('title', 'description', 'isCompleted')
         .orderBy('id', 'asc')
+      if (!list || list.length === 0) {
+        return response.status(404).json({ error: 'No items found' })
+      }
       return list
     } catch (err) {
       return response.status(500).send({ error: err.message })
