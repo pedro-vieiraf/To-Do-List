@@ -6,7 +6,7 @@ function ToDoList() {
 
     useEffect(() => {
         async function getToDoList() {
-            const response = await fetch('http://localhost:3333/toDos');
+            const response = await fetch('http://backend:3333/toDos');
             const data = await response.json();
             setToDoList(data)
         }
