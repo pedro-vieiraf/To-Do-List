@@ -2,8 +2,10 @@ FROM node:22.4.1-slim
 
 WORKDIR /app
 
-EXPOSE 3333
+COPY package*.json ./
 
-RUN npm install -g typescript
+RUN npm install
+
+EXPOSE 3333
 
 CMD [ "npm", "run", "dev" ]
