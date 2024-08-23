@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 function ToDoList() {
@@ -8,15 +9,13 @@ function ToDoList() {
         async function getToDoList() {
             try {
                 console.log('Fetching data from http://backend:3333/toDos'); // Adicione este log
-                const response = await fetch('http://backend:3333/toDos');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                console.log('Data fetched:', data); // Adicione este log
-                setToDoList(data);
+                const response = await axios.get('http://backend:3333/toDos');
+                console.log(response);
+                
+                console.log('Data fetched:', response); // Adicione este log
+                setToDoList(response.data);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.log('Error fetching data:', error);
             }
         }
         getToDoList();
